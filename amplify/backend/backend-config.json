@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "grabberfrontend1d02ed19": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
