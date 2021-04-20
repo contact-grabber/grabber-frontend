@@ -1,8 +1,7 @@
 import './App.css';
-import Amplify from 'aws-amplify';
+import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
-import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
-
+import { AmplifySignOut, AmplifyAuthenticator } from '@aws-amplify/ui-react';
 Amplify.configure(awsconfig);
 
 function App() {
@@ -10,10 +9,13 @@ function App() {
 		<div className='App'>
 			<header className='App-header'>
 				<AmplifySignOut />
+				<button OnClick={() => Auth.federatedSignIn({ provider: 'Facebook' })}>
+					Sign in With Facebook
+				</button>
 				<h2>My App Content</h2>
 			</header>
 		</div>
 	);
 }
 
-export default withAuthenticator(App);
+export default App;

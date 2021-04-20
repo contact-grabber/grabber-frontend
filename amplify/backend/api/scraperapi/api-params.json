@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/jobs",
+            "lambdaFunction": "JobScraper",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/jobs"
+        }
+    ],
+    "resourceName": "scraperapi",
+    "apiName": "scraperapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "JobScraper"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-contactscraper-staging-221852-authRole",
+        "unAuthRoleName": "amplify-contactscraper-staging-221852-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "JobScraper",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
