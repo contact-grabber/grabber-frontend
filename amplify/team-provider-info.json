@@ -18,7 +18,7 @@
       "function": {
         "JobScraper": {
           "deploymentBucketName": "amplify-contactscraper-staging-221852-deployment",
-          "s3Key": "amplify-builds/JobScraper-5568317a7559382f4838-build.zip"
+          "s3Key": "amplify-builds/JobScraper-33533375625056654539-build.zip"
         }
       }
     }

@@ -41,7 +41,7 @@
             "Arn"
         ]
     },
-    "useDefault": "defaultSocial",
+    "useDefault": "manual",
     "usernameAttributes": [
         "email, phone_number"
     ],
@@ -58,6 +58,7 @@
         "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://localhost:3000/\",\"https://main.d3r7d6c4tw4h5f.amplifyapp.com/\"],\"LogoutURLs\":[\"https://localhost:3000/\",\"https://main.d3r7d6c4tw4h5f.amplifyapp.com/\"]}",
-    "authProviders": []
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.d3r7d6c4tw4h5f.amplifyapp.com/\"],\"LogoutURLs\":[\"https://main.d3r7d6c4tw4h5f.amplifyapp.com/\"]}",
+    "authProviders": [],
+    "thirdPartyAuth": false
 }
