@@ -15,9 +15,7 @@ function App() {
 			switch (event) {
 				case 'signIn':
 				case 'cognitoHostedUI':
-					getUser()
-						.then((userData) => setUser(userData))
-						.then(console.log(user));
+					getUser().then((userData) => setUser(userData));
 					break;
 				case 'signOut':
 					setUser(null);
@@ -60,7 +58,7 @@ function App() {
 					</Navbar.Text>
 				</Navbar.Collapse>
 			</Navbar>
-			<p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
+			<p>User: {user ? JSON.stringify(user) : 'None'}</p>
 
 			<div>
 				<ResultBox />
