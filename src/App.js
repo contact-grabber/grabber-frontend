@@ -43,7 +43,7 @@ function App() {
 				<Navbar.Toggle />
 				<Navbar.Collapse className='justify-content-end'>
 					<Navbar.Text>
-						Signed in as:{` ${user ? user.currentAuthenticatedUser : ' '}  `}
+						Signed in as:{` ${user ? user.attributes.email : ' '}  `}
 						{user ? (
 							<Button variant='secondary' onClick={() => Auth.signOut()}>
 								Sign Out
