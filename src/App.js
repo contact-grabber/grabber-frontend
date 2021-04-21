@@ -15,7 +15,9 @@ function App() {
 			switch (event) {
 				case 'signIn':
 				case 'cognitoHostedUI':
-					getUser().then((userData) => setUser(userData));
+					getUser()
+						.then((userData) => setUser(userData))
+						.then(console.log(user));
 					break;
 				case 'signOut':
 					setUser(null);
@@ -39,7 +41,7 @@ function App() {
 	return (
 		<div>
 			<Navbar bg='primary' variant='dark'>
-				<Navbar.Brand href='#home'>Job Finder</Navbar.Brand>
+				<Navbar.Brand href='/'>Job Finder</Navbar.Brand>
 				<Navbar.Toggle />
 				<Navbar.Collapse className='justify-content-end'>
 					<Navbar.Text>
