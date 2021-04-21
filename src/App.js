@@ -1,6 +1,9 @@
+/* eslint-disable default-case */
 import React, { useEffect, useState } from 'react';
 import Amplify, { Auth, Hub } from 'aws-amplify';
 import awsconfig from './aws-exports';
+import ResultBox from './ResultBox';
+import { Navbar, Button } from 'react-bootstrap';
 
 Amplify.configure(awsconfig);
 
@@ -35,14 +38,31 @@ function App() {
 
 	return (
 		<div>
+			<Navbar bg='primary' variant='dark'>
+				<Navbar.Brand href='#home'>Job Finder</Navbar.Brand>
+				<Navbar.Toggle />
+				<Navbar.Collapse className='justify-content-end'>
+					<Navbar.Text>
+						Signed in as:{` ${user ? user.currentAuthenticatedUser : ' '}  `}
+						{user ? (
+							<Button variant='secondary' onClick={() => Auth.signOut()}>
+								Sign Out
+							</Button>
+						) : (
+							<Button
+								variant='secondary'
+								onClick={() => Auth.federatedSignIn()}>
+								Sign In
+							</Button>
+						)}
+					</Navbar.Text>
+				</Navbar.Collapse>
+			</Navbar>
 			<p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
-			{user ? (
-				<button onClick={() => Auth.signOut()}>Sign Out</button>
-			) : (
-				<button onClick={() => Auth.federatedSignIn()}>
-					Federated Sign In
-				</button>
-			)}
+
+			<div>
+				<ResultBox />
+			</div>
 		</div>
 	);
 }
