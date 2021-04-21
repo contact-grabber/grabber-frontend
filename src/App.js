@@ -1,14 +1,19 @@
 /* eslint-disable default-case */
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Amplify, { Auth, Hub } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import ResultBox from './ResultBox';
+import Search from './Search';
 import { Navbar, Button } from 'react-bootstrap';
 
 Amplify.configure(awsconfig);
 
-function App() {
+const App = () => {
 	const [user, setUser] = useState(null);
+	const [searchString, setSearchString] = useState('Software Developer');
+	const [lastSearch, setLastSearch] = useState(searchString);
+	const [indeed, setIndeed] = useState(null);
+	const [monster, setMoster] = useState(null);
 
 	useEffect(() => {
 		Hub.listen('auth', ({ payload: { event, data } }) => {
@@ -30,11 +35,14 @@ function App() {
 		getUser().then((userData) => setUser(userData));
 	}, []);
 
-	function getUser() {
+	const getUser = () => {
 		return Auth.currentAuthenticatedUser()
 			.then((userData) => userData)
 			.catch(() => console.log('Not signed in'));
-	}
+	};
+	const handleChange = (event) => {
+		setSearchString(event.target.value);
+	};
 
 	return (
 		<div>
@@ -58,13 +66,16 @@ function App() {
 					</Navbar.Text>
 				</Navbar.Collapse>
 			</Navbar>
-			<p>User: {user ? JSON.stringify(user) : 'None'}</p>
-
 			<div>
-				<ResultBox />
+				<Search
+					searchString={searchString}
+					onChange={handleChange}
+					value={searchString}
+				/>
+				<ResultBox lastSearch={lastSearch} />
 			</div>
 		</div>
 	);
-}
+};
 
 export default App;
