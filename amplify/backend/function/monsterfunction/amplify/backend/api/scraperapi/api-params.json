@@ -1,0 +1,55 @@
+{
+    "paths": [
+        {
+            "name": "/jobs",
+            "lambdaFunction": "JobScraper",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/jobs"
+        },
+        {
+            "name": "/monster",
+            "lambdaFunction": "monsterfunction",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/monster"
+        }
+    ],
+    "resourceName": "scraperapi",
+    "apiName": "scraperapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "JobScraper"
+        },
+        {
+            "lambdaFunction": "monsterfunction"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-contactscraper-staging-221852-authRole",
+        "unAuthRoleName": "amplify-contactscraper-staging-221852-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "JobScraper",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "monsterfunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "7c25fb87"
+}
