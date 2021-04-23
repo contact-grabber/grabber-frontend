@@ -7,7 +7,7 @@ const Results = ({ state, setState, route, setLastSearch, search }) => {
 	useEffect(() => {
 		axios
 			.get(
-				`https://gjgml13loc.execute-api.us-west-2.amazonaws.com/staging/${route}?search=${search.job}&state=${search.location}}`
+				`https://gjgml13loc.execute-api.us-west-2.amazonaws.com/staging/${route}?search=${search.job}&state=${search.location}`
 			)
 			.then((res) => {
 				setState(res);

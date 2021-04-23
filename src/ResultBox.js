@@ -7,14 +7,13 @@ const ResultBox = ({ lastSearch, setLastSearch, search }) => {
 
 	return (
 		<div>
-			<h1>Results Box</h1>
 			<h3>Showing results for {lastSearch}</h3>
 			<div className='results'>
 				<Results
 					state={jobs}
 					setState={setJobs}
 					route='jobs'
-					setLastSearch={lastSearch}
+					setLastSearch={setLastSearch}
 					search={search}
 				/>
 			</div>
@@ -23,7 +22,7 @@ const ResultBox = ({ lastSearch, setLastSearch, search }) => {
 					state={monster}
 					setState={setMonster}
 					route='monster'
-					setLastSearch={lastSearch}
+					setLastSearch={setLastSearch}
 					search={search}
 				/>
 			</div>
