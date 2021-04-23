@@ -10,8 +10,12 @@ Amplify.configure(awsconfig);
 
 const App = () => {
 	const [user, setUser] = useState(null);
-	const [searchString, setSearchString] = useState('Software Developer');
-	const [lastSearch, setLastSearch] = useState(searchString);
+	const [search, setSearch] = useState({
+		job: 'Software Developer',
+		location: 'Nashville',
+	});
+
+	const [lastSearch, setLastSearch] = useState(search.job);
 
 	useEffect(() => {
 		Hub.listen('auth', ({ payload: { event, data } }) => {
@@ -38,9 +42,6 @@ const App = () => {
 			.then((userData) => userData)
 			.catch(() => console.log('Not signed in'));
 	};
-	const handleChange = (event) => {
-		setSearchString(event.target.value);
-	};
 
 	return (
 		<div>
@@ -65,12 +66,12 @@ const App = () => {
 				</Navbar.Collapse>
 			</Navbar>
 			<div>
-				<Search
-					searchString={searchString}
-					onChange={handleChange}
-					value={searchString}
+				<Search search={search} setSearch={setSearch} />
+				<ResultBox
+					lastSearch={lastSearch}
+					setLastSearch={setLastSearch}
+					search={search}
 				/>
-				<ResultBox lastSearch={lastSearch} />
 			</div>
 		</div>
 	);

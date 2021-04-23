@@ -12,8 +12,11 @@ def handler(event, context):
             self.company = company
             self.summary = summary
 
+    search_string = event['queryStringParameters']['search']
+    location = event['queryStringParameters']['state']
+
     client = ScraperAPIClient(os.environ.get('API_KEY'))
-    URL = "https://www.indeed.com/jobs?q=Entry+Level+Software+Engineer&l=Remote"
+    URL = f"https://www.indeed.com/jobs?q={search_string}&l={location}"
     page = client.get(url=URL)
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find(id='resultsCol') 
