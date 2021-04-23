@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Results from './Results';
 
-const ResultBox = ({ lastSearch }) => {
+const ResultBox = ({ lastSearch, setLastSearch, search }) => {
 	const [jobs, setJobs] = useState();
 	const [monster, setMonster] = useState();
 
@@ -9,8 +9,24 @@ const ResultBox = ({ lastSearch }) => {
 		<div>
 			<h1>Results Box</h1>
 			<h3>Showing results for {lastSearch}</h3>
-			<Results state={jobs} setState={setJobs} route='jobs' />
-			<Results state={monster} setState={setMonster} route='monster' />
+			<div className='results'>
+				<Results
+					state={jobs}
+					setState={setJobs}
+					route='jobs'
+					setLastSearch={lastSearch}
+					search={search}
+				/>
+			</div>
+			<div className='results'>
+				<Results
+					state={monster}
+					setState={setMonster}
+					route='monster'
+					setLastSearch={lastSearch}
+					search={search}
+				/>
+			</div>
 		</div>
 	);
 };

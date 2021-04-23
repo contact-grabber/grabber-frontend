@@ -3,20 +3,34 @@ import axios from 'axios';
 import Grid from './Grid';
 import Card from 'react-bootstrap/Card';
 
-const Results = ({ state, setState, route }) => {
+const Results = ({ state, setState, route, setLastSearch, search }) => {
 	useEffect(() => {
 		axios
 			.get(
-				`https://gjgml13loc.execute-api.us-west-2.amazonaws.com/staging/${route}`
+				`https://gjgml13loc.execute-api.us-west-2.amazonaws.com/staging/${route}?search=${search.job}&state=${search.location}}`
 			)
 			.then((res) => {
 				setState(res);
+				setLastSearch(search.job);
 			});
 	}, []);
-
 	return (
 		<Grid>
-			<div>{state ? console.log(state) : 'loading'}</div>
+			{state
+				? state.data.jobs.map((job) => {
+						return (
+							<Card style={{ width: '15rem' }} key={job.company}>
+								<Card.Body>
+									<Card.Title>{job.title}</Card.Title>
+									<Card.Subtitle className='mb-2 text-muted'>
+										{job.company}
+									</Card.Subtitle>
+									<Card.Text>{job.summary}</Card.Text>
+								</Card.Body>
+							</Card>
+						);
+				  })
+				: 'loading'}
 		</Grid>
 	);
 };
