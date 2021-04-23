@@ -18,7 +18,11 @@
       "function": {
         "JobScraper": {
           "deploymentBucketName": "amplify-contactscraper-staging-221852-deployment",
-          "s3Key": "amplify-builds/JobScraper-33533375625056654539-build.zip"
+          "s3Key": "amplify-builds/JobScraper-6b335a7049593446594c-build.zip"
+        },
+        "monsterfunction": {
+          "deploymentBucketName": "amplify-contactscraper-staging-221852-deployment",
+          "s3Key": "amplify-builds/monsterfunction-79326f33357133494d42-build.zip"
         }
       }
     }

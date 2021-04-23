@@ -13,6 +13,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": []
+    },
+    "monsterfunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -23,6 +28,14 @@
         {
           "category": "function",
           "resourceName": "JobScraper",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "monsterfunction",
           "attributes": [
             "Name",
             "Arn"

@@ -6,31 +6,29 @@ import os
 
 def handler(event, context):
 
+    class job:
+        def __init__(self, title, company, summary):
+            self.title = title
+            self.company = company
+            self.summary = summary
+
     client = ScraperAPIClient(os.environ.get('API_KEY'))
     URL = "https://www.indeed.com/jobs?q=Entry+Level+Software+Engineer&l=Remote"
     page = client.get(url=URL)
-    print(page)
     soup = BeautifulSoup(page.content, 'html.parser')
-    print(soup)
-    results = soup.find(id='resultsCol')
-    print(results)
+    results = soup.find(id='resultsCol') 
     job_elems = results.find_all('div', class_='jobsearch-SerpJobCard')
-    titles = []
-    companies = []
-    summaries = []
+
+    jobs = {
+        "jobs" : []
+    }
     for job_elem in job_elems:
         title_elem = job_elem.find('h2', class_='title')
         company_elem = job_elem.find('div', class_='sjcl')
         summary_elem = job_elem.find('div', class_='summary')
-        titles.append(title_elem.text.strip())
-        companies.append(company_elem.text.strip())
-        summaries.append(summary_elem.text.strip())
+        jobs['jobs'].append( job(title_elem.text.strip(), company_elem.text.strip(), summary_elem.text.strip()))
 
-    response = {
-        "titles": titles,
-        "companies": companies,
-        "summaries": summaries
-    }
+    result = json.dumps(jobs, default = lambda x: x.__dict__ )
 
     return {
         'statusCode': 200,
@@ -39,5 +37,5 @@ def handler(event, context):
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
-        'body': json.dumps(response)
+        'body': result.replace("\\n"," ")
     }

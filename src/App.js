@@ -12,8 +12,6 @@ const App = () => {
 	const [user, setUser] = useState(null);
 	const [searchString, setSearchString] = useState('Software Developer');
 	const [lastSearch, setLastSearch] = useState(searchString);
-	const [indeed, setIndeed] = useState(null);
-	const [monster, setMoster] = useState(null);
 
 	useEffect(() => {
 		Hub.listen('auth', ({ payload: { event, data } }) => {

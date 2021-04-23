@@ -157,23 +157,19 @@ Parameters:
     Type: String
   
             
+  hostedUIProviderCreds:
+    Type: String
+  
+            
   oAuthMetadata:
     Type: String
   
+            
             
         
   authProviders:
     Type: CommaDelimitedList
       
-  
-  thirdPartyAuth:
-    Type: String
-            
-  hostedUIProviderCreds:
-    Type: String
-  
-            
-            
 Conditions:
   ShouldNotCreateEnvResources: !Equals [ !Ref env, NONE ]
   
