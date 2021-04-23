@@ -7,6 +7,14 @@
                 "open": true
             },
             "policyResourceName": "/jobs"
+        },
+        {
+            "name": "/monster",
+            "lambdaFunction": "monsterfunction",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/monster"
         }
     ],
     "resourceName": "scraperapi",
@@ -14,6 +22,9 @@
     "functionArns": [
         {
             "lambdaFunction": "JobScraper"
+        },
+        {
+            "lambdaFunction": "monsterfunction"
         }
     ],
     "privacy": {
@@ -30,6 +41,15 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "monsterfunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
-    ]
+    ],
+    "uuid": "7c25fb87"
 }
