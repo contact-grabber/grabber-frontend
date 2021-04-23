@@ -4,7 +4,7 @@ from scraper_api import ScraperAPIClient
 import os
 
 def handler(event, context):
-    client = ScraperAPIClient('2873f1389a25c9d9d2fda418700fc835')
+    client = ScraperAPIClient(os.environ.get('API_KEY'))
     monster_url = "https://www.monster.com/jobs/search?q=Software+Engineer&where=Nashville%2C+TN&page=6"
     page = client.get(url=monster_url, render=True)
     soup = BeautifulSoup(page.content, 'html.parser')

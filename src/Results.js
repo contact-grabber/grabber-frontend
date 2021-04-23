@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import Grid from './Grid';
+import Card from 'react-bootstrap/Card';
 
 const Results = ({ state, setState, route }) => {
 	useEffect(() => {
@@ -15,11 +16,7 @@ const Results = ({ state, setState, route }) => {
 
 	return (
 		<Grid>
-			<div>
-				<p>I'm The Results!</p>
-				{state ? console.log(state) : null}
-				<p>{state ? state.data.titles[1] : 'Loading'}</p>
-			</div>
+			<div>{state ? console.log(state) : 'loading'}</div>
 		</Grid>
 	);
 };
