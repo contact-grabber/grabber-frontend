@@ -39,7 +39,7 @@ From there it will transform that data into JSON and send it back to the fronten
 As we only had 5 days to build this fullstack app, we originially wanted to use Selenium for our webcrawler. However we found that getting past CAPTCHA would take too much time so we opted to use SCRAPERAPI instead. Cheating I know, But time constraints 🤷‍♂️ 
 
 Dynamically using one component to render both websites. The challenge that appeared for this was when submitting new queries. To fix this solution, we attached a new state called 'refresh' to the useEffect. This makes it so we can manually refresh state and make axios calls with the new states.
-```react
+```js
 
 	useEffect(() => {
 		getJobs();
