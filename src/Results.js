@@ -3,8 +3,15 @@ import axios from 'axios';
 import Grid from './Grid';
 import Card from 'react-bootstrap/Card';
 
-const Results = ({ state, setState, route, setLastSearch, search }) => {
-	useEffect(() => {
+const Results = ({
+	state,
+	setState,
+	route,
+	setLastSearch,
+	search,
+	refresh,
+}) => {
+	const getJobs = () => {
 		axios
 			.get(
 				`https://gjgml13loc.execute-api.us-west-2.amazonaws.com/staging/${route}?search=${search.job}&state=${search.location}`
@@ -13,7 +20,12 @@ const Results = ({ state, setState, route, setLastSearch, search }) => {
 				setState(res);
 				setLastSearch(search.job);
 			});
-	}, []);
+	};
+
+	useEffect(() => {
+		getJobs();
+		//Putting refresh here so that when it is called manually it will rerender and get the new state for the searching.
+	}, [refresh]);
 	return (
 		<Grid>
 			{state
