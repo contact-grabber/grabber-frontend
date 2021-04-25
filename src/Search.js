@@ -1,10 +1,14 @@
 import React from 'react';
 import { Form, Col, Button } from 'react-bootstrap';
-import handleSubmit from './Results';
 
-const Search = ({ search, setSearch }) => {
+const Search = ({ search, setSearch, setRefresh }) => {
 	const handleChange = (event) => {
 		setSearch({ ...search, [event.target.id]: event.target.value });
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		setRefresh({});
 	};
 
 	return (
@@ -14,17 +18,21 @@ const Search = ({ search, setSearch }) => {
 					<Col xs={7}>
 						<Form.Control
 							type='text'
-							placeholder={search.job}
+							required
+							placeholder='Software Developer'
 							onChange={handleChange}
 							value={search.job}
+							id='job'
 						/>
 					</Col>
 					<Col>
 						<Form.Control
 							type='text'
-							placeholder={search.location}
+							required
+							placeholder='Nashville'
 							onChange={handleChange}
 							value={search.location}
+							id='location'
 						/>
 					</Col>
 					<Button variant='secondary' type='submit'>

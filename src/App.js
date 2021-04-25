@@ -10,6 +10,7 @@ Amplify.configure(awsconfig);
 
 const App = () => {
 	const [user, setUser] = useState(null);
+	const [refresh, setRefresh] = useState({});
 	const [search, setSearch] = useState({
 		job: 'Software Developer',
 		location: 'Nashville',
@@ -66,11 +67,19 @@ const App = () => {
 				</Navbar.Collapse>
 			</Navbar>
 			<div>
-				<Search search={search} setSearch={setSearch} />
+				<Search
+					search={search}
+					setSearch={setSearch}
+					refresh={refresh}
+					setRefresh={setRefresh}
+				/>
 				<ResultBox
 					lastSearch={lastSearch}
 					setLastSearch={setLastSearch}
 					search={search}
+					setSearch={setSearch}
+					refresh={refresh}
+					setRefresh={setRefresh}
 				/>
 			</div>
 		</div>
