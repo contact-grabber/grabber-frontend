@@ -9,7 +9,7 @@ If you click [here](https://main.d3r7d6c4tw4h5f.amplifyapp.com/) it will take yo
 If you care to look at what the backend is producting feel free to look at what [Indeed](https://gjgml13loc.execute-api.us-west-2.amazonaws.com/staging/jobs) and [Monster](https://gjgml13loc.execute-api.us-west-2.amazonaws.com/staging/monster) produce! 
 
 ## How Does It Work??
-When you call one of the backend endpoints, it will trigger lambda functions to run. These functions are made from python and will take what your search information was via query parameters and input them into the url string for each site. From there our scraper will grab the info from the page and parse the data that we want to see. 
+When you call one of the backend endpoints, it will trigger lambda functions to run. These functions are made with Python and will take what your search information was via query parameters and input them into the url string for each site. From there, our scraper will grab the info from the page and parse the data that we want to see. 
 
 From there it will transform that data into JSON and send it back to the frontend for presentation. 
 
@@ -36,7 +36,7 @@ From there it will transform that data into JSON and send it back to the fronten
 
 ## RoadBlocks/ Favorite Code
 
-As we only had 5 days to build this fullstack app, we originially wanted to use Selenium for our webcrawler. However we found that getting past CAPTCHA would take too much time so we opted to use SCRAPERAPI instead. Cheating I know, But time constraints 🤷‍♂️ 
+As we only had 5 days to build this fullstack app, we originially wanted to use Selenium for our webcrawler. However we found that getting past CAPTCHA would take too much time so we opted to use SCRAPERAPI instead. Cheating we know, but time constraints 🤷‍♂️ 
 
 Dynamically using one component to render both websites. The challenge that appeared for this was when submitting new queries. To fix this solution, we attached a new state called 'refresh' to the useEffect. This makes it so we can manually refresh state and make axios calls with the new states.
 ```js
